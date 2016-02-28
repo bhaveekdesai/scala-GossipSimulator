@@ -1,0 +1,37 @@
+=> INSTRUCTIONS:
+
+The source code is in:
+project2.scala file located at: project2>src>main>scala
+
+To start:
+	1. Go to the project directory: project2>
+	2. Run: sbt clean compile "run <number of nodes> <topology> <algorithm>"
+	
+	where: 
+		<topology> = line, 3d, imp3d, full
+		<algorithm> = gossip, push-sum
+	Example: sbt clean compile "run 100 line push-sum"
+------------------------------------------------------------------------
+
+=> What is Working ?
+	1. Each permutation of (topology, algorithm) is working
+	2. (ticker) Checks are put in place to NOT increment self counter if
+	   message is received from self 
+	3. Cnvergence of the system as a whole might not be reached in some
+	   cases where for a node, all neighbors are shut down, BECAUSE of
+	   point #2 above. In such cases, convergence time of the system
+	   would be the convergence time of the last converged node at any
+	   point
+	4. (bonus) Checks are put in place to NOT send message to dead
+	   neighbors
+	   
+=> What is the largest network we managed to deal with for each type of
+   topology and algorithm ?
+   
+   Line: 343
+   3D: 343
+   Imperfect 3D:  343
+   Full: 1728
+   
+------------------------------------------------------------------------
+	   
